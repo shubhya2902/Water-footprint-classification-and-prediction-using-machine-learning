@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Soil Classification Project</title>
+    <link href="/static/css/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+<nav>
+    <ul class="footer-links">
+        <li><a href="/user_home">Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+
+<section id="login" class="auth-section">
+
+
+    <div class="auth-container">
+
+        <!-- Login Form -->
+        <div class="auth-box">
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+
+
+            <div class="container text-center">
+                <h2 class="text-success fw-bold">🌱 Crop Yield Prediction Result</h2>
+
+                <h3 class="card-title text-info">Predicted Result:</h3>
+<h2 class="text-success fw-bold">{{ prediction }} Tons/{{unit}}</h2>
+
+
+
+
+                <a href="/prediction">
+                    <button type="submit">Check Another</button>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+</body>
+</html>

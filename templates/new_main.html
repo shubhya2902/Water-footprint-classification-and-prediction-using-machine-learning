@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Water Footprint</title>
+  <link href="/static/css/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <nav>
+    <a href="#home" class="nav-link">Home</a>
+    <a href="/login" class="nav-link">Login</a>
+    <a href="/register" class="nav-link">Signup</a>
+  </nav>
+
+
+  <div class="content">
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-messages">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+
+    <section id="home" class="home-section">
+
+    </section>
+
+
+
+
+
+
+
+
+
+  </div>
+
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <h3>Water Footprint</h3>
+    <p>Helping users to understand water footprint and their importance in agriculture and environment.</p>
+
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/register">Signup</a></li>
+    </ul>
+
+    <p class="footer-credit">© 2025 Water Footprint. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>

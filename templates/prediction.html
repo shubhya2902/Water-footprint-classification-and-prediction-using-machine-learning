@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Predict by Inputs</title>
+    <link href="/static/css/main.css" rel="stylesheet">
+
+    <style>
+        .content {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        .bg-img {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.71), rgba(0, 0, 0, 0.7)), url('static/images/groundwater.png');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            color: white;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<nav>
+    <ul class="footer-links">
+        <li><a href="/user_home">Home</a></li>
+        <li><a href="/logout">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="bg-img">
+    <div class="content"><br>
+
+        <div class="index-main"><br><br><br><br>
+
+            <div style="width: 100%; padding-top: 5%;">
+                <div class="header-content">
+                    <h1 style="text-align: center; color: white">
+                        <span class="header-content-text">Enter Crop Information for Prediction</span>
+                    </h1>
+                </div>
+            </div>
+            <br><br>
+
+            <div class="upload-section">
+                <div class="upload-file">
+                    <form class="file-form" method="POST">
+                        <div class="form-group">
+                            <label for="crop_name">Crop Name</label>
+                            <select name="crop_name" id="crop_name">
+                                {% set crops = [
+                                    'Wheat','Rice','Maize','Cotton','Sugarcane','Soybean','Barley','Millets',
+                                    'Groundnut','Mustard','Chickpea','Lentils','Sunflower','Potato','Tomato',
+                                    'Onion','Garlic','Spinach','Cabbage','Carrot','Cauliflower','Peas','Jute',
+                                    'Tobacco','Coffee','Tea','Apple','Banana','Mango','Grapes','Orange',
+                                    'Papaya','Pineapple','Coconut','Cashew','Rubber','Bamboo','Sorghum',
+                                    'Pearl Millet','Oats','Flax','Quinoa','Buckwheat','Turmeric','Ginger',
+                                    'Cardamom','Clove','Saffron','Vanilla','Sesame','Wheat Variant',
+                                    'Rice Variant','Maize Variant','Cotton Variant','Sugarcane Variant',
+                                    'Soybean Variant','Barley Variant','Millets Variant','Groundnut Variant',
+                                    'Mustard Variant','Chickpea Variant','Lentils Variant','Sunflower Variant',
+                                    'Potato Variant','Tomato Variant','Onion Variant','Garlic Variant',
+                                    'Spinach Variant','Cabbage Variant','Carrot Variant','Cauliflower Variant',
+                                    'Peas Variant','Jute Variant','Tobacco Variant','Coffee Variant','Tea Variant',
+                                    'Apple Variant','Banana Variant','Mango Variant','Grapes Variant','Orange Variant',
+                                    'Papaya Variant','Pineapple Variant','Coconut Variant','Cashew Variant',
+                                    'Rubber Variant','Bamboo Variant','Sorghum Variant','Pearl Millet Variant',
+                                    'Oats Variant','Flax Variant','Quinoa Variant','Buckwheat Variant',
+                                    'Turmeric Variant','Ginger Variant','Cardamom Variant','Clove Variant',
+                                    'Saffron Variant','Vanilla Variant','Sesame Variant'
+                                ] %}
+                                {% for name in crops %}
+                                    <option value="{{ loop.index0 }}">{{ name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="crop_area">Crop Area</label>
+                            <input type="number" id="crop_area" name="crop_area" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="area_unit">Area Unit</label>
+                            <select name="area_unit" id="area_unit">
+                                <option value="1">Hectares</option>
+                                <option value="0">Acres</option>
+                            </select>
+                        </div>
+
+                        <!-- Irrigation Method -->
+                        <div class="form-group">
+                            <label for="irrigation_method">Irrigation Method</label>
+                            <select name="irrigation_method" id="irrigation_method">
+                                {% set irrigation_methods = ['Drip','Flood','Sprinkler','Furrow','Rainfed','Basin'] %}
+                                {% for method in irrigation_methods %}
+                                    <option value="{{ loop.index0 }}">{{ method }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rainfall_mm">Rainfall (in mm)</label>
+                            <input type="number" id="rainfall_mm" name="rainfall_mm" required>
+                        </div>
+
+                        <!-- Soil Type -->
+                        <div class="form-group">
+                            <label for="soil_type">Soil Type</label>
+                            <select name="soil_type" id="soil_type">
+                                {% set soil_types = [
+                                    'Loamy','Clayey','Sandy loam','Black soil','Alluvial','Red soil','Sandy',
+                                    'Clay loam','Forest loam','Acidic','Laterite','Coastal sandy','Red sandy',
+                                    'Red loam','Silty loam'
+                                ] %}
+                                {% for soil in soil_types %}
+                                    <option value="{{ loop.index0 }}">{{ soil }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-info btn-lg mt-4">Predict</button>
+                    </form>
+                </div>
+
+                <div class="header-content-sub">
+                    <p style="text-align: center; margin-top: 15px; color: red" class="header-content-info">{{error}}</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

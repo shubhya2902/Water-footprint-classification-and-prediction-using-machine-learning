@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Signup</title>
+  <link href="/static/css/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <nav>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>  </nav>
+
+<section id="login" class="auth-section">
+  <div class="auth-container">
+
+        <!-- Signup Form -->
+    <div class="auth-box">
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <div class="flash-messages">
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+
+
+      <h3>Signup</h3>
+      <form action="{{ url_for('register') }}" method="POST">
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+        <button type="submit">Signup</button>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <h3>Water Footprint</h3>
+    <p>Helping users to understand water footprint and their importance in agriculture and environment.</p>
+
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+
+    <p class="footer-credit">© 2025 Water Footprint. All rights reserved.</p>
+  </div>
+</footer>
+
+</body>
+</html>
